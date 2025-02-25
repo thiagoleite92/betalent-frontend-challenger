@@ -1,0 +1,42 @@
+table {
+  padding: 0 32px;
+  font-weight: 500;
+  border-collapse: collapse;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  color: var(--Black);
+
+  thead {
+    background-color: var(--Primary);
+    color: var(--White);
+  }
+
+  tbody {
+    background: var(--White);
+    box-shadow: 0px 4px 6px #00000033;
+
+    tr {
+      border-bottom: var(--Gray10) 1px solid;
+    }
+  }
+
+  tr:first-child th:first-child {
+    border-top-left-radius: 8px;
+  }
+
+  tr:first-child th:last-child {
+    border-top-right-radius: 8px;
+  }
+
+  th,
+  td {
+    padding: 14px 32px;
+    text-align: left;
+
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+  }
+}

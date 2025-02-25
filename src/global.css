@@ -1,0 +1,33 @@
+:root {
+  --White: #fff;
+  --Black: #1c1c1c;
+  --Gray00: #f0f0f0;
+  --Gray05: #f5f5f5;
+  --Gray10: #dfdfdf;
+  --Gray20: #9e9e9e;
+  --Blue10: #edeffb;
+  --Primary: #0500ff;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('./assets/fonts/Roboto-Regular.ttf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Roboto Bold';
+  src: url('./assets/fonts/Roboto-Bold.ttf') format('opentype');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto';
+  background-color: var(--Gray00);
+  -webkit-font-smoothing: antialiased;
+  height: 100vh;
+}
