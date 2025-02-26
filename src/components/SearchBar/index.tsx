@@ -6,9 +6,7 @@ export function SearchBar() {
     <section className={styles.searchContainer}>
       <h1>Funcionários</h1>
       <form className={styles.formContainer}>
-        <div className={styles.inputContainer}>
-          <Input placeholder="Pesquisar" />
-        </div>
+        <Input placeholder="Pesquisar" />
       </form>
     </section>
   );

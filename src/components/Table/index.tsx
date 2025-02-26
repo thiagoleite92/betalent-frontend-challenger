@@ -1,4 +1,4 @@
-import './styles.module.css';
+import styles from './styles.module.css';
 import { ReactNode } from 'react';
 
 type TableProps = {
@@ -6,5 +6,5 @@ type TableProps = {
 };
 
 export function Table({ children }: TableProps) {
-  return <table>{children}</table>;
+  return <table className={styles.tableContainer}>{children}</table>;
 }

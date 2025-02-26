@@ -1,3 +1,4 @@
+import { AvatarProfile } from '../../components/Avatar';
 import { Header } from '../../components/Header';
 import { SearchBar } from '../../components/SearchBar';
 import { Table } from '../../components/Table';
@@ -5,6 +6,9 @@ import { TableBody } from '../../components/Table/tableBody';
 import { TableHeader } from '../../components/Table/tableHeader';
 import { heads } from '../../const/column-heads';
 import { useWindowSize } from '../../hooks/useWindowSize';
+import { Card } from '../../mobile/components/Card';
+import { CardDisplay } from '../../mobile/components/Card/cardDisplay';
+import { CardTitle } from '../../mobile/components/Card/cardTitle';
 import { EmployeeType } from '../../types/EmployeeType';
 import { dateFormatter, phoneFormatter } from '../../utils/formatters';
 import styles from './styles.module.css';
@@ -59,7 +63,6 @@ const rows = [
 
 export function Home() {
   const { width } = useWindowSize();
-  console.log(width);
 
   return (
     <main className={styles.main}>
@@ -86,6 +89,23 @@ export function Home() {
             )}
           />
         </Table>
+      )}
+      {width && width < 681 && (
+        <Card>
+          <CardTitle<string>
+            titles={heads?.slice(0, 2)}
+            renderItem={(head) => <div key={head}>{head}</div>}
+          />
+          <CardDisplay<EmployeeType>
+            list={rows}
+            renderItem={(item) => (
+              <div key={item.id}>
+                <AvatarProfile src={item?.image} />
+                <div>{item.name}</div>
+              </div>
+            )}
+          />
+        </Card>
       )}
     </main>
   );
