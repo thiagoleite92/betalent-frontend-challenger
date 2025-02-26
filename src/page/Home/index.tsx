@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { AvatarProfile } from '../../components/Avatar';
 import { Header } from '../../components/Header';
 import { SearchBar } from '../../components/SearchBar';
@@ -64,6 +65,8 @@ const rows = [
 export function Home() {
   const { width } = useWindowSize();
 
+  const [selectedRow, setSelectedRow] = useState<number | null>(null);
+
   return (
     <main className={styles.main}>
       <Header />
@@ -99,11 +102,34 @@ export function Home() {
           <CardDisplay<EmployeeType>
             list={rows}
             renderItem={(item) => (
-              <div key={item.id}>
-                <AvatarProfile src={item?.image} />
-                <div>{item.name}</div>
-              </div>
+              <>
+                <div key={item.id}>
+                  <AvatarProfile src={item?.image} />
+                  <div>{item.name}</div>
+                </div>
+              </>
             )}
+            renderItemContent={(item) =>
+              selectedRow === item.id && (
+                <section key={item.id}>
+                  <div>
+                    <strong>Cargo</strong>
+                    <span>{item.job}</span>
+                  </div>
+                  <div>
+                    <strong>Data de admissão</strong>
+                    <span>{dateFormatter(item.admission_date)}</span>
+                  </div>
+                  <div>
+                    <strong>Telefone</strong>
+                    <span>{phoneFormatter(item.phone)}</span>
+                  </div>
+                </section>
+              )
+            }
+            handleSelectRow={(item) => {
+              setSelectedRow(selectedRow === null ? item.id : null);
+            }}
           />
         </Card>
       )}
