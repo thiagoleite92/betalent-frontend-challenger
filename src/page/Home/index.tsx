@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { AvatarProfile } from '../../components/Avatar';
 import { Header } from '../../components/Header';
 import { SearchBar } from '../../components/SearchBar';
@@ -64,6 +64,7 @@ const rows = [
 
 export function Home() {
   const { width } = useWindowSize();
+  const isDesktop = useMemo(() => width && width >= 981, [width]);
 
   const [selectedRow, setSelectedRow] = useState<number | null>(null);
 
@@ -71,7 +72,7 @@ export function Home() {
     <main className={styles.main}>
       <Header />
       <SearchBar />
-      {width && width >= 681 && (
+      {isDesktop && (
         <Table>
           <TableHeader<string>
             heads={heads}
@@ -93,43 +94,40 @@ export function Home() {
           />
         </Table>
       )}
-      {width && width < 681 && (
+      {!isDesktop && (
         <Card>
-          <CardTitle<string>
-            titles={heads?.slice(0, 2)}
+          <CardTitle
+            titles={heads.slice(0, 2)}
             renderItem={(head) => <div key={head}>{head}</div>}
           />
-          <CardDisplay<EmployeeType>
+          <CardDisplay
             list={rows}
-            renderItem={(item) => (
-              <>
-                <div key={item.id}>
-                  <AvatarProfile src={item?.image} />
-                  <div>{item.name}</div>
-                </div>
-              </>
+            renderItem={({ id, image, name }) => (
+              <div key={id}>
+                <AvatarProfile src={image} />
+                <div>{name}</div>
+              </div>
             )}
-            renderItemContent={(item) =>
-              selectedRow === item.id && (
-                <section key={item.id}>
+            renderItemContent={({ id, job, admission_date, phone }) =>
+              selectedRow === id && (
+                <section key={id}>
                   <div>
-                    <strong>Cargo</strong>
-                    <span>{item.job}</span>
+                    <strong>Cargo:</strong> <span>{job}</span>
                   </div>
                   <div>
-                    <strong>Data de admissão</strong>
-                    <span>{dateFormatter(item.admission_date)}</span>
+                    <strong>Data de admissão:</strong>{' '}
+                    <span>{dateFormatter(admission_date)}</span>
                   </div>
                   <div>
-                    <strong>Telefone</strong>
-                    <span>{phoneFormatter(item.phone)}</span>
+                    <strong>Telefone:</strong>{' '}
+                    <span>{phoneFormatter(phone)}</span>
                   </div>
                 </section>
               )
             }
-            handleSelectRow={(item) => {
-              setSelectedRow(selectedRow === null ? item.id : null);
-            }}
+            handleSelectRow={({ id }) =>
+              setSelectedRow(selectedRow === id ? null : id)
+            }
           />
         </Card>
       )}
