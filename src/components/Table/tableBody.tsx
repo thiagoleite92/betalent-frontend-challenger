@@ -1,8 +1,8 @@
 type TableBodyProps<T> = {
-  rows: T[];
+  data: T[];
   renderItem: (item: T) => React.ReactNode;
 };
 
-export function TableBody<T>({ renderItem, rows }: TableBodyProps<T>) {
-  return <tbody>{rows.map((row) => renderItem(row))}</tbody>;
+export function TableBody<T>({ renderItem, data }: TableBodyProps<T>) {
+  return <tbody>{data.map((row) => renderItem(row))}</tbody>;
 }

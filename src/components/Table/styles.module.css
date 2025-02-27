@@ -5,10 +5,14 @@
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   color: var(--Black);
+  width: 100%;
 
   thead {
     background-color: var(--Primary);
     color: var(--White);
+    position: sticky;
+    top: 0;
+    z-index: 1;
   }
 
   tbody {
