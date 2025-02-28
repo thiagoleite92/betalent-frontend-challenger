@@ -5,10 +5,10 @@ import styles from './styles.module.css';
 
 type InputProps = InputHTMLAttributes<HTMLInputElement>;
 
-export function Input({ placeholder, ...props }: InputProps) {
+export function Input({ ...props }: InputProps) {
   return (
     <div className={styles.inputContainer}>
-      <input type="text" placeholder={placeholder} {...props} />
+      <input type="text" {...props} />
       <img src={searchIcon} alt="Search Icon" />
     </div>
   );
