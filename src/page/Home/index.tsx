@@ -29,7 +29,13 @@ export function Home() {
       <Header />
       <SearchBar />
       {isDesktop && (
-        <div style={{ width: '100%', overflowY: 'auto', maxHeight: '500px' }}>
+        <div
+          style={{
+            width: '100%',
+            overflowY: 'auto',
+            maxHeight: '500px',
+          }}
+        >
           <style>
             {`
               div::-webkit-scrollbar {

@@ -64,6 +64,7 @@
       color: red;
       gap: 15px;
       border-bottom: 1px solid var(--Gray10);
+      padding: 10px 0 31px;
 
       > div {
         display: flex;
