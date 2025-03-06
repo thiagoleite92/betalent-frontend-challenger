@@ -29,48 +29,26 @@ export function Home() {
       <Header />
       <SearchBar />
       {isDesktop && (
-        <div
-          style={{
-            width: '100%',
-            overflowY: 'auto',
-            maxHeight: '500px',
-          }}
-        >
-          <style>
-            {`
-              div::-webkit-scrollbar {
-                width: 4px;
-              }
-              div::-webkit-scrollbar-thumb {
-                background: var(--Gray20);
-              }
-              div::-webkit-scrollbar-track {
-                background: var(--Black);
-                border-radius: 4px;
-              }
-            `}
-          </style>
-          <Table>
-            <TableHeader<string>
-              heads={heads}
-              renderItem={(head) => <th key={head}>{head}</th>}
-            />
-            <TableBody<EmployeeType>
-              data={employeeData}
-              renderItem={({ id, admission_date, image, job, name, phone }) => (
-                <tr key={id}>
-                  <td>
-                    <img src={image} />
-                  </td>
-                  <td>{name}</td>
-                  <td>{job}</td>
-                  <td>{dateFormatter(admission_date)}</td>
-                  <td>{phoneFormatter(phone)}</td>
-                </tr>
-              )}
-            />
-          </Table>
-        </div>
+        <Table>
+          <TableHeader<string>
+            heads={heads}
+            renderItem={(head) => <th key={head}>{head}</th>}
+          />
+          <TableBody<EmployeeType>
+            data={employeeData}
+            renderItem={({ id, admission_date, image, job, name, phone }) => (
+              <tr key={id}>
+                <td>
+                  <img src={image} />
+                </td>
+                <td>{name}</td>
+                <td>{job}</td>
+                <td>{dateFormatter(admission_date)}</td>
+                <td>{phoneFormatter(phone)}</td>
+              </tr>
+            )}
+          />
+        </Table>
       )}
       {!isDesktop && (
         <Card>
