@@ -11,7 +11,7 @@ import { EmployeeCardDisplay } from '../components/EmployeeCardDisplay';
 import styles from './styles.module.css';
 export function Home() {
   const { width } = useWindowSize();
-  const isDesktop = useMemo(() => width && width >= 981, [width]);
+  const isDesktop = useMemo(() => width && width >= 761, [width]);
   const { employeeData, isLoading } = useEmployee();
 
   const [selectedRow, setSelectedRow] = useState<number | null>(null);

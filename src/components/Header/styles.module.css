@@ -5,7 +5,7 @@
   border-radius: 8px;
   box-shadow: 0px 4px 6px #00000033;
 
-  @media (max-width: 680px) {
+  @media (max-width: 760px) {
     margin: 0;
     border-radius: 0;
   }
