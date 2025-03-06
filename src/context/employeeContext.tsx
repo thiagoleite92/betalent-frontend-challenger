@@ -11,11 +11,19 @@ type EmployeeProviderProps = {
 export function EmployeeProvider({ children }: EmployeeProviderProps) {
   const [employeeData, setEmployeeData] = useState<EmployeeType[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchEmployeeData = async () => {
-    const { data } = await api.get<EmployeeType[]>('/employees');
+    setIsLoading(true);
 
-    setEmployeeData(data);
+    try {
+      const { data } = await api.get<EmployeeType[]>('/employees');
+      setEmployeeData(data);
+    } catch (error) {
+      console.error('Erro ao buscar funcionários:', error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleSearchTerm = (text: string) => {
@@ -26,9 +34,9 @@ export function EmployeeProvider({ children }: EmployeeProviderProps) {
     const normalizedSearch = normalizeText(searchTerm);
 
     return (
-      normalizeText(employee.name).includes(normalizedSearch) ||
-      normalizeText(employee.job).includes(normalizedSearch) ||
-      employee.phone.includes(searchTerm)
+      normalizeText(employee?.name).includes(normalizedSearch) ||
+      normalizeText(employee?.job).includes(normalizedSearch) ||
+      employee?.phone.includes(searchTerm)
     );
   });
 
@@ -40,6 +48,8 @@ export function EmployeeProvider({ children }: EmployeeProviderProps) {
     employeeData: filteredData,
     searchTerm,
     handleSearchTerm,
+    employeeQuantity: filteredData?.length,
+    isLoading,
   };
 
   return (

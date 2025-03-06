@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { EmployeeContext } from '../context/employeeProvider';
 
 export function useEmployee() {
-  const { employeeData } = useContext(EmployeeContext);
+  const { employeeData, isLoading } = useContext(EmployeeContext);
 
-  return employeeData;
+  return { employeeData, isLoading };
 }
