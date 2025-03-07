@@ -5,10 +5,10 @@ import { useWindowSize } from '../../hooks/useWindowSize';
 import { useEmployee } from '../../hooks/useEmployee';
 import { Loading } from '../../components/Loading';
 import { NoDataWarning } from '../../components/NoDataWarning';
-import { EmployeeTable } from '../components/EmployeeTable';
-import { EmployeeCardDisplay } from '../components/EmployeeCardDisplay';
 
 import styles from './styles.module.css';
+import { EmployeeTable } from './components/employeeTable';
+import { EmployeeCardDisplay } from './components/employeeMobile';
 export function Home() {
   const { width } = useWindowSize();
   const isDesktop = useMemo(() => width && width >= 761, [width]);
