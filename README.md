@@ -1,50 +1,70 @@
-# React + TypeScript + Vite
+# BeTalent Frontend Challenger
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Tecnologias: JavaScript, React
 
-Currently, two official plugins are available:
+## Pré-requisitos
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Antes de começar, certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
 
-## Expanding the ESLint configuration
+- [Git](https://git-scm.com)
+- [Node.js](https://nodejs.org) 22.12.0
+- [npm](https://www.npmjs.com)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Passo a Passo
 
-- Configure the top-level `parserOptions` property like this:
+Siga os passos abaixo para configurar e rodar o projeto em sua máquina local.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### 1. Clonando o Repositório
+
+Abra o terminal e execute o comando abaixo para clonar o repositório:
+
+```bash
+git clone https://github.com/thiagoleite92/betalent-frontend-challenger
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### 2. Navegando até o Diretório do Projeto
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+```bash
+cd betalent-frontend-challenger
+```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+### 3. Instalando as Dependências
+
+```bash
+npm install
+```
+
+### 4. Configurando Variáveis de Ambiente
+
+```bash
+cp .env.example .env
+```
+
+## Rodando o Projeto
+
+### 1. Inicie o servidor
+
+```bash
+npm run server
+```
+
+### 2. Inicie o frontend
+
+```bash
+npm run dev
+```
+
+A aplicação estará rodando em http://localhost:5173/.
+
+OBS: Passos 1 e 2 dessa etapa deverão ser executados em terminais diferentes.
+
+```
+# Funcionalidades
+
+## Visualização de dados de funcionários
+
+- [x] Listagem dos dados de funcionários
+- [x] Filtragem da lista por nome, telefone ou cargo
+- [x] Responsividade
+
 ```
